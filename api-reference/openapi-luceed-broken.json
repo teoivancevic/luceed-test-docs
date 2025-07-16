@@ -1,0 +1,1256 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Luceed API",
+      "version": 2.189,
+      "description": "Web services"
+    },
+    "servers": [
+      {
+        "url": "http://apidemo.luceed.hr"
+      }
+    ],
+    "paths": {
+      "/datasnap/rest/artikli/sifra/{sifra}": {
+        "get": {
+          "operationId": "getProductBySifra",
+          "summary": "Products",
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "sifra",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/sifradio/{dio_sifre}": {
+        "get": {
+          "operationId": "getProductBySifraDio",
+          "summary": "Products",
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "dio_sifre",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/barcode/{barcode}": {
+        "get": {
+          "operationId": "getProductByBarcode",
+          "summary": "Products",
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "barcode",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/uid/{id-sid}": {
+        "get": {
+          "operationId": "getProductByUid",
+          "summary": "Products",
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "id-sid",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/naziv/{dio-naziva}/{od_zapisa,broj_zapisa}": {
+        "get": {
+          "operationId": "getProductsByNaziv",
+          "summary": "Products",
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "dio-naziva",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "od_zapisa,broj_zapisa",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/lista/{od_zapisa,broj_zapisa}": {
+        "get": {
+          "operationId": "getProductsLista",
+          "summary": "Products",
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "od_zapisa,broj_zapisa",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/GrupaArtikla/{sifra-grupe-artikla}": {
+        "get": {
+          "operationId": "getProductsByGrupaArtikla",
+          "summary": "Products",
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "sifra-grupe-artikla",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/GrupaArtiklaNaziv/{dio-naziva-grupe-artikla}": {
+        "get": {
+          "operationId": "getProductsByGrupaArtiklaNaziv",
+          "summary": "Products",
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "dio-naziva-grupe-artikla",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/RobnaMarka/{sifra-robne-marke}": {
+        "get": {
+          "operationId": "getProductsByRobnaMarka",
+          "summary": "Products",
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "sifra-robne-marke",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/RobnaMarkaNaziv/{dio-naziva-robne-marke}": {
+        "get": {
+          "operationId": "getProductsByRobnaMarkaNaziv",
+          "summary": "Products",
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "dio-naziva-robne-marke",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/atribut/{tip_sifre_atributa}/{sifra_atributa}/{vrijednost-or-part-vrijednosti}": {
+        "get": {
+          "operationId": "getProductsByAtribut",
+          "summary": "Products",
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "tip_sifre_atributa",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "sifra_atributa",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "vrijednost-or-part-vrijednosti",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/dokumenti/{file_uid}": {
+        "get": {
+          "operationId": "getProductDocuments",
+          "summary": "Products – retrieval of product documents",
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "file_uid",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/FilesResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/dodaci/lista/{od_zapisa,broj_zapisa}": {
+        "get": {
+          "operationId": "getProductsWithAdditionalProducts",
+          "summary": "Products – retrieval of products with additional products",
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "od_zapisa,broj_zapisa",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductWithAdditionalsResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/prijevodi/{sifra_jezika}/{od_zapisa,broj_zapisa}": {
+        "get": {
+          "operationId": "getProductsWithTranslations",
+          "summary": "Products – retrieval of products with translations",
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "sifra_jezika",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "od_zapisa,broj_zapisa",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductTranslationsResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/sastavnice/uid/{artikl_uid}": {
+        "get": {
+          "operationId": "getProductComponentsByUid",
+          "summary": "Products – retrieval of products with components",
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "artikl_uid",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductComponentsResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/sastavnice/sifra/{sifra_artikla}": {
+        "get": {
+          "operationId": "getProductComponentsBySifra",
+          "summary": "Products – retrieval of products with components",
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "sifra_artikla",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductComponentsResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/snimi": {
+        "post": {
+          "operationId": "createProduct",
+          "summary": "Products – enter / modify items in Luceed",
+          "tags": [
+            "Products"
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductCreateResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "operationId": "updateProduct",
+          "summary": "Products – enter / modify items in Luceed",
+          "tags": [
+            "Products"
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductCreateResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/atribut": {
+        "put": {
+          "operationId": "updateProductAttributes",
+          "summary": "Products – enter / modify items in Luceed",
+          "tags": [
+            "Products"
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductAttributeInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductAttributeResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "ProductResponse": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "artikli": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Product"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Product": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "description": "ID of product in Luceed (1st part of primary key in Luceed)"
+            },
+            "sid": {
+              "type": "integer",
+              "description": "Server ID (ID location) in Luceed (2nd part of primary key in Luceed)"
+            },
+            "artikl_uid": {
+              "type": "string",
+              "description": "ID and SID of product (id,sid) as one string (unique key of product in Luceed)"
+            },
+            "artikl": {
+              "type": "string",
+              "description": "Code of product in Luceed"
+            },
+            "naziv": {
+              "type": "string",
+              "description": "Name of product artikla"
+            },
+            "barcode": {
+              "type": "string",
+              "description": "Barcode of product"
+            },
+            "jm": {
+              "type": "string",
+              "description": "Unit of measure"
+            },
+            "kataloski_broj": {
+              "type": "string",
+              "description": "Catalog number of product"
+            },
+            "vpc": {
+              "type": "number",
+              "description": "Wholesale price"
+            },
+            "mpc": {
+              "type": "number",
+              "description": "Retail price"
+            },
+            "enabled": {
+              "type": "string",
+              "description": "Is the product active (D/N); Aktivan=\"D\""
+            },
+            "usluga": {
+              "type": "string",
+              "description": "Is the product a service (D/N); Usluga=\"D\""
+            },
+            "materijal": {
+              "type": "string",
+              "description": "Is the product material (D/N); Materijal=\"D\""
+            },
+            "eol": {
+              "type": "string",
+              "description": "Has the product reach the end of its life cycle „end of life\" (EOL)=\"D\""
+            },
+            "webshop": {
+              "type": "string",
+              "description": "Is the product offered on the webshop (D/N); Webshop=\"D\""
+            },
+            "multipack": {
+              "type": "string",
+              "description": "Is the product multipack (the product consists of several parts that do not appear in the invoice but are accounted for in the background; used in hotel industry)"
+            },
+            "trgovacka_roba": {
+              "type": "string",
+              "description": "Is the product a merchandise (D/N); Trgovačka roba=\"D\""
+            },
+            "bundle": {
+              "type": "string",
+              "description": "Is the product a bundle (the product consists of several parts that appear on the document)"
+            },
+            "osiguranje": {
+              "type": "string",
+              "description": "Is the product marked as insurance (D/N); Osiguranje=\"D\""
+            },
+            "opis": {
+              "type": "string",
+              "description": "Description of product"
+            },
+            "specifikacija": {
+              "type": "string",
+              "description": "Detail specification of product"
+            },
+            "kolicina_min_prodaja": {
+              "type": "number",
+              "description": "Minimum quantity for sale"
+            },
+            "porezna_tarifa": {
+              "type": "string",
+              "description": "Tax rate code"
+            },
+            "porezna_tarifa_uid": {
+              "type": "string",
+              "description": "PK od tax rate"
+            },
+            "porezna_tarifa_naziv": {
+              "type": "string",
+              "description": "Name of the tax rate"
+            },
+            "porezna_tarifa_b2b": {
+              "type": "string",
+              "description": "Link of tax rate to the B2B application"
+            },
+            "stopa_pdv": {
+              "type": "number",
+              "description": "VAT rate"
+            },
+            "stopa_pp": {
+              "type": "number",
+              "description": "Consumption tax rate"
+            },
+            "ambalazna_naknada": {
+              "type": "number",
+              "description": "Amount of packaging fee"
+            }
+          }
+        },
+        "FilesResponse": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "files": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/File"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "File": {
+          "type": "object",
+          "properties": {
+            "file_uid": {
+              "type": "string",
+              "description": "File PK in Luceed database"
+            },
+            "filename": {
+              "type": "string",
+              "description": "Filename"
+            },
+            "naziv": {
+              "type": "string",
+              "description": "Name of file"
+            },
+            "opis": {
+              "type": "string",
+              "description": "File description"
+            },
+            "redoslijed": {
+              "type": "string",
+              "description": "Order"
+            },
+            "public": {
+              "type": "string",
+              "description": "Public (yes/no)"
+            },
+            "md5": {
+              "type": "string",
+              "description": "MD5 of filename"
+            },
+            "content": {
+              "type": "string",
+              "description": "Base64 encoded database"
+            }
+          }
+        },
+        "ProductWithAdditionalsResponse": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "artikli": {
+                    "type": "array",
+                    "items": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/Product"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "dodaci": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Dodatak"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Dodatak": {
+          "type": "object",
+          "properties": {
+            "dodatak__artikl_uid": {
+              "type": "string",
+              "description": "Additional product PK in Luceed"
+            },
+            "dodatak__artikl": {
+              "type": "string",
+              "description": "Additional product code in Luceed"
+            },
+            "dodatak__artikl_b2b": {
+              "type": "string",
+              "description": "Additional product PK in B2B system"
+            },
+            "dodatak__grupa_artikla_uid": {
+              "type": "string",
+              "description": "Additional product group PK in Luceed"
+            },
+            "dodatak__grupa_artikla": {
+              "type": "string",
+              "description": "Additional product group code in Luceed"
+            },
+            "dodatak__grupa_artikla_b2b": {
+              "type": "string",
+              "description": "Additional product group in B2B application"
+            },
+            "napomena": {
+              "type": "string",
+              "description": "Remark"
+            },
+            "dodatak__robna_marka_uid": {
+              "type": "string",
+              "description": "Additional product brand PK in Luceed"
+            },
+            "dodatak__robna_marka": {
+              "type": "string",
+              "description": "Additional product brand code in Luceed"
+            },
+            "dodatak__robna_marka_b2b": {
+              "type": "string",
+              "description": "Additional product brand in B2B application"
+            },
+            "dobavljac__partner_uid": {
+              "type": "string",
+              "description": "Additional product supplier PK in Luceed"
+            },
+            "dobavljac__partner": {
+              "type": "string",
+              "description": "Additional product supplier code in Luceed"
+            },
+            "dobavljac__partner_b2b": {
+              "type": "string",
+              "description": "Additional product supplier in B2B application"
+            }
+          }
+        },
+        "ProductTranslationsResponse": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "artikli": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "description": "Product ID in Luceed (first part of PK in Luceed)"
+                        },
+                        "sid": {
+                          "type": "integer",
+                          "description": "Server ID (location ID) in Luceed (second part of PK in Luceed)"
+                        },
+                        "artikl_uid": {
+                          "type": "string",
+                          "description": "Product PK in Luceed"
+                        },
+                        "artikl": {
+                          "type": "string",
+                          "description": "Product code in Luceed"
+                        },
+                        "artikl_b2b": {
+                          "type": "string",
+                          "description": "Product code in B2B application"
+                        },
+                        "prijevodi": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "polje": {
+                                "type": "string",
+                                "description": "Translated field in Luceed"
+                              },
+                              "vrijednost": {
+                                "type": "string",
+                                "description": "Field translation"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ProductComponentsResponse": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "artikli": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "description": "Product ID in Luceed (first part of PK in Luceed)"
+                        },
+                        "sid": {
+                          "type": "integer",
+                          "description": "Server ID (location ID) in Luceed (second part of PK in Luceed)"
+                        },
+                        "artikl_uid": {
+                          "type": "string",
+                          "description": "Product PK in Luceed"
+                        },
+                        "artikl": {
+                          "type": "string",
+                          "description": "Product code in Luceed"
+                        },
+                        "artikl_b2b": {
+                          "type": "string",
+                          "description": "Product code in B2B application"
+                        },
+                        "sastavnice": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Sastavnica"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Sastavnica": {
+          "type": "object",
+          "properties": {
+            "artikl_uid": {
+              "type": "string",
+              "description": "UID of product in Luceed"
+            },
+            "artikl": {
+              "type": "string",
+              "description": "Product code in Luceed"
+            },
+            "naziv": {
+              "type": "string",
+              "description": "Product name in Luceed."
+            },
+            "kolicina": {
+              "type": "number",
+              "description": "Quantity in component."
+            },
+            "vpc": {
+              "type": "number",
+              "description": "Wholesale price"
+            },
+            "mpc": {
+              "type": "number",
+              "description": "Retail price"
+            },
+            "vpc_rabat": {
+              "type": "number",
+              "description": "Discount on wholesale price"
+            },
+            "mpc_rabat": {
+              "type": "number",
+              "description": "Discount on retail price"
+            },
+            "kalo": {
+              "type": "number",
+              "description": "Kalo (shrinkage)"
+            },
+            "gratis": {
+              "type": "string",
+              "description": "Is part of the component free of charge (yes/no)"
+            },
+            "napomena": {
+              "type": "string",
+              "description": "Remark"
+            },
+            "modified": {
+              "type": "string",
+              "description": "Date and time of product data change"
+            }
+          }
+        },
+        "ProductInput": {
+          "type": "object",
+          "properties": {
+            "artikli": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ProductInputItem"
+              }
+            }
+          }
+        },
+        "ProductInputItem": {
+          "type": "object",
+          "properties": {
+            "artikl_uid": {
+              "type": "string",
+              "description": "UID of product in Luceed"
+            },
+            "artikl_b2b": {
+              "type": "string",
+              "description": "Unique key of product in B2B(application that sends the data)"
+            },
+            "artikl": {
+              "type": "string",
+              "description": "Product code u Luceedu"
+            },
+            "naziv": {
+              "type": "string",
+              "description": "Product name"
+            },
+            "barcode": {
+              "type": "string",
+              "description": "Barcode of product"
+            },
+            "jm": {
+              "type": "string",
+              "description": "Unit of measure"
+            },
+            "kataloski_broj": {
+              "type": "string",
+              "description": "Product's catalogue number"
+            },
+            "vpc": {
+              "type": "number",
+              "description": "Wholesale price"
+            },
+            "mpc": {
+              "type": "number",
+              "description": "Retail price"
+            },
+            "enabled": {
+              "type": "string",
+              "description": "Is the product enabled (yes/no)"
+            },
+            "usluga": {
+              "type": "string",
+              "description": "Is the product a service (yes/no)"
+            },
+            "materijal": {
+              "type": "string",
+              "description": "Is the product a material (yes/no)"
+            },
+            "eol": {
+              "type": "string",
+              "description": "Did the article reach the end of its life cycle (EOL)=\"D\""
+            },
+            "webshop": {
+              "type": "string",
+              "description": "Is the item offered for the webshop (yes/no)"
+            },
+            "multipack": {
+              "type": "string",
+              "description": "Is the product multipack (the product consists of several parts that do not appear in the invoice but are accounted for in the background; used in hotel industry)"
+            },
+            "trgovacka_roba": {
+              "type": "string",
+              "description": "Is the product a merchandise"
+            },
+            "bundle": {
+              "type": "string",
+              "description": "Is the product a bundle (the product consists of several parts that appear on the document)"
+            },
+            "osiguranje": {
+              "type": "string",
+              "description": "Is the product marked as insurance"
+            },
+            "opis": {
+              "type": "string",
+              "description": "Product description"
+            },
+            "specifikacija": {
+              "type": "string",
+              "description": "Products detail specification"
+            },
+            "porezna_tarifa": {
+              "type": "string",
+              "description": "Tax tariff code"
+            },
+            "porezna_tarifa_uid": {
+              "type": "string",
+              "description": "UID of tax tariff in Luceed"
+            },
+            "porezna_tarifa_b2b": {
+              "type": "string",
+              "description": "UID of tax tariff in B2B (application that sends the data)"
+            }
+          }
+        },
+        "ProductCreateResponse": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "ProductAttributeInput": {
+          "type": "object",
+          "properties": {
+            "atributi": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "doc_uid": {
+                    "type": "string",
+                    "description": "Product unique key in Luceed"
+                  },
+                  "doc_b2b": {
+                    "type": "string",
+                    "description": "Product unique key in B2B applicaton"
+                  },
+                  "doc": {
+                    "type": "string",
+                    "description": "Product code"
+                  },
+                  "atribut_uid": {
+                    "type": "string",
+                    "description": "Attribute unique key in Luceed"
+                  },
+                  "atribut_b2b": {
+                    "type": "string",
+                    "description": "Attribute unique key in B2B applicaton"
+                  },
+                  "atribut": {
+                    "type": "string",
+                    "description": "Attribute code"
+                  },
+                  "vrijednost": {
+                    "type": "string",
+                    "description": "attribute value, depending on the attribute typeFor type Reference, it is written in the form \"(x, y)\" where x is the first part of the unique key in Luceed and y is the second part"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ProductAttributeResponse": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

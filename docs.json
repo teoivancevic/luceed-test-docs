@@ -1,20 +1,36 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
-  "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+  "name": "Luceed API",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#0D9373",
+    "light": "#07C983",
+    "dark": "#0D9373"
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "mailto:support@tomsoft.hr"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Dashboard",
+    "url": "https://luceed.hr/login"
+  },
+  
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Guides",        
         "groups": [
+          
           {
-            "group": "Get Started",
+            "group": "Mintlify Get Started",
             "pages": [
               "index",
               "quickstart",
@@ -22,7 +38,7 @@
             ]
           },
           {
-            "group": "Essentials",
+            "group": "Mintlify Essentials",
             "pages": [
               "essentials/markdown",
               "essentials/code",
@@ -31,6 +47,24 @@
               "essentials/navigation",
               "essentials/reusable-snippets"
             ]
+          },
+          {
+            "group": "Luceed Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "authentication"
+            ]
+          },
+          {
+            "group": "Luceed Integration Guides",
+            "pages": [
+              "guides/getting-started",
+              "guides/error-handling",
+              "guides/pagination",
+              "guides/webhooks",
+              "guides/best-practices"
+            ]
           }
         ]
       },
@@ -38,22 +72,112 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "API Documentation",
+            "group": "Mintlify API Documentation",
             "pages": [
               "api-reference/introduction"
             ]
           },
           {
-            "group": "Endpoint Examples",
+            "group": "Mintlify Endpoint Examples",
             "pages": [
               "api-reference/endpoint/get",
               "api-reference/endpoint/create",
               "api-reference/endpoint/delete",
               "api-reference/endpoint/webhook"
             ]
+          },
+          {
+            "group": "Products",
+            "pages": [
+              "api-reference/products/overview",
+              "api-reference/products/get-products",
+              "api-reference/products/get-product-documents",
+              "api-reference/products/products-with-additional-products",
+              "api-reference/products/product-translations",
+              "api-reference/products/products-with-components",
+              "api-reference/products/create-product",
+              "api-reference/products/update-product",
+              "api-reference/products/update-product-attributes"
+            ]
+          },
+          {
+            "group": "Inventory",
+            "pages": [
+              "api-reference/inventory/warehouses",
+              "api-reference/inventory/stock-status",
+              "api-reference/inventory/stock-by-warehouse"
+            ]
+          },
+          {
+            "group": "Pricing",
+            "pages": [
+              "api-reference/pricing/current-prices",
+              "api-reference/pricing/partner-prices",
+              "api-reference/pricing/price-lists"
+            ]
+          },
+          {
+            "group": "Partners & Users",
+            "pages": [
+              "api-reference/partners/get-partners",
+              "api-reference/partners/partner-details",
+              "api-reference/users/get-users",
+              "api-reference/users/user-details"
+            ]
+          },
+          {
+            "group": "Orders & Sales",
+            "pages": [
+              "api-reference/orders/create-sales-order",
+              "api-reference/orders/update-order-status",
+              "api-reference/orders/get-orders",
+              "api-reference/orders/order-delivery"
+            ]
+          },
+          {
+            "group": "System Data",
+            "pages": [
+              "api-reference/system/locations",
+              "api-reference/system/payment-types",
+              "api-reference/system/product-groups",
+              "api-reference/system/brands"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "MCP Server",
+        "groups": [
+          {
+            "group": "MCP Server",
+            "pages": [
+              "mcp/overview",
+              "mcp/installation",
+              "mcp/configuration",
+              "mcp/claude-desktop-setup"
+            ]
+          },
+          {
+            "group": "MCP Tools",
+            "pages": [
+              "mcp/tools/overview",
+              "mcp/tools/product-search",
+              "mcp/tools/inventory-check",
+              "mcp/tools/order-management",
+              "mcp/tools/partner-lookup"
+            ]
+          },
+          {
+            "group": "Examples",
+            "pages": [
+              "mcp/examples/basic-queries",
+              "mcp/examples/complex-workflows",
+              "mcp/examples/error-handling"
+            ]
           }
         ]
       }
+        
     ],
     "global": {
       "anchors": [
@@ -71,32 +195,47 @@
           "anchor": "Blog",
           "href": "https://mintlify.com/blog",
           "icon": "newspaper"
+        },
+        {
+          "anchor": "luceed Documentation",
+          "icon": "book-open-cover",
+          "href": "https://docs.luceed.hr"
+        },
+        {
+          "anchor": "luceed Community",
+          "icon": "slack",
+          "href": "https://community.luceed.hr"
         }
       ]
+    
     }
   },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
-    }
-  },
+  
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "website": "https://luceed.hr",
+      "linkedin": "https://linkedin.com/company/luceed"
     }
+  },
+
+
+  "api": {
+    "baseUrl": "http://apidemo.luceed.hr",
+    "auth": {
+      "method": "bearer"
+    },
+    "playground": {
+      "mode": "show"
+    }
+  },
+  "openapi": [
+    "api-reference/openapi.json"
+  ],
+  "mcp": {
+    "enabled": true,
+    "serverName": "luceed",
+    "packageName": "@tomsoft/luceed-mcp-server"
   }
+  
+ 
 }
