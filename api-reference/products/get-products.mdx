@@ -1,0 +1,68 @@
+---
+title: 'Products'
+openapi: 'GET /datasnap/rest/artikli/sifra/{sifra}'
+---
+
+### Alternative Endpoints
+{/* ```http
+GET /datasnap/rest/artikli/sastavnice/sifra/{sifra_artikla}
+http://apidemo.luceed.hr/datasnap/rest/artikli/sifradio/<dio_sifre>
+http://apidemo.luceed.hr/datasnap/rest/artikli/barcode/<barcode>
+http://apidemo.luceed.hr/datasnap/rest/artikli/uid/<id-sid>
+http://apidemo.luceed.hr/datasnap/rest/artikli/naziv/<dio-naziva>/<[od_zapisa,broj_zapisa]>
+http://apidemo.luceed.hr/datasnap/rest/artikli/lista/<[od_zapisa,broj_zapisa]>
+http://apidemo.luceed.hr/datasnap/rest/artikli/GrupaArtikla/<sifra-grupe-artikla>
+http://apidemo.luceed.hr/datasnap/rest/artikli/GrupaArtiklaNaziv/<dio-naziva-grupe-artikla>
+http://apidemo.luceed.hr/datasnap/rest/artikli/RobnaMarka/<sifra-robne-marke>
+http://apidemo.luceed.hr/datasnap/rest/artikli/RobnaMarkaNaziv/<dio-naziva-robne-marke>
+http://apidemo.luceed.hr/datasnap/rest/artikli/atribut/<tip_sifre_atributa>/<sifra_atributa/<vrijednost-or-
+part-vrijednosti>
+``` */}
+
+<AccordionGroup>
+  <Accordion title="By Product Identifiers">
+    ```http
+    GET /datasnap/rest/artikli/sifradio/{dio_sifre}
+    GET /datasnap/rest/artikli/barcode/{barcode}
+    GET /datasnap/rest/artikli/uid/{id-sid}
+    ```
+    - **sifradio**: Search by partial product code
+    - **barcode**: Search by product barcode
+    - **uid**: Search by unique product ID (format: id-sid)
+  </Accordion>
+  <Accordion title="By Product Name">
+    ```http
+    GET /datasnap/rest/artikli/naziv/{dio-naziva}/{od_zapisa,broj_zapisa}
+    GET /datasnap/rest/artikli/lista/{od_zapisa,broj_zapisa}
+    ```
+    - **naziv**: Search by partial product name with pagination
+    - **lista**: Get product list without details with pagination
+  </Accordion>
+  <Accordion title="By Product Groups">
+    ```http
+    GET /datasnap/rest/artikli/GrupaArtikla/{sifra-grupe-artikla}
+    GET /datasnap/rest/artikli/GrupaArtiklaNaziv/{dio-naziva-grupe-artikla}
+    ```
+    - **GrupaArtikla**: Search by product group code
+    - **GrupaArtiklaNaziv**: Search by partial product group name
+  </Accordion>
+  <Accordion title="By Brand">
+    ```http
+    GET /datasnap/rest/artikli/RobnaMarka/{sifra-robne-marke}
+    GET /datasnap/rest/artikli/RobnaMarkaNaziv/{dio-naziva-robne-marke}
+    ```
+    - **RobnaMarka**: Search by brand code
+    - **RobnaMarkaNaziv**: Search by partial brand name
+  </Accordion>
+  <Accordion title="By Attributes">
+    ```http
+    GET /datasnap/rest/artikli/atribut/{tip_sifre_atributa}/{sifra_atributa}/{vrijednost-or-part-vrijednosti}
+    ```
+    - **atribut**: Search by attribute and attribute value
+    - Valid attribute code types: `atribut`, `atribut_b2b`, `atribut_uid`
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+**Pagination Format**: Use `[start_record,record_count]` format, e.g., `[0,100]` for first 100 records, `[100,100]` for next 100.
+</Note>

@@ -16,6 +16,113 @@
       }
     ],
     "paths": {
+        "/datasnap/rest/artikli/sifra/{sifra}": {
+            "get": {
+                "operationId": "getProducts",
+                "summary": "Products",
+                "description": "An catalog of products is a data set that, in addition to information about products and its attributes, may also contain inventory status information. This data set contains information related to products. Only active products are displayed.",
+                "tags": ["Products"],
+                "parameters": [
+                {
+                    "name": "sifra",
+                    "in": "path",
+                    "required": true,
+                    "description": "Product code",
+                    "schema": {
+                    "type": "string"
+                    },
+                    "example": "TVSO26BX320B"
+                }
+                ],
+                "responses": {
+                "200": {
+                    "description": "Success",
+                    "content": {
+                    "application/json": {
+                        "schema": {
+                        "$ref": "#/components/schemas/ProductsResponse"
+                        },
+                        "example": {
+                        "result": [
+                            {
+                            "artikli": [
+                                {
+                                "id": "1",
+                                "sid": "42",
+                                "artikl_uid": "1-42",
+                                "artikl": "TVSO 26BX320B",
+                                "naziv": "TV prijemnik LCD SONY KDL-26BX320B",
+                                "jm": "kom",
+                                "vpc": 1590,
+                                "mpc": 2259,
+                                "enabled": "D",
+                                "usluga": "N",
+                                "materijal": "N",
+                                "eol": "N",
+                                "webshop": "N",
+                                "multipack": "N",
+                                "trgovacka_roba": "N",
+                                "bundle": "N",
+                                "opis": "26\" / 66 cm, 16:9 LCD TV rezolucije 1366 x 768 px (HD ready), 2x HDMI, MPEG-4, USB",
+                                "specifikacija": null,
+                                "kolicina_min_prodaja": 2,
+                                "porezna_tarifa": "25",
+                                "porezna_tarifa_uid": "16-42",
+                                "porezna_tarifa_naziv": "PDV 25%",
+                                "stopa_pdv": 25,
+                                "stopa_pp": 0,
+                                "ambalazna_naknada": 0,
+                                "nadgrupa_artikla": "001",
+                                "nadgrupa_artikla_naziv": "Home elektronika",
+                                "grupa_artikla": "TV",
+                                "grupa_artikla_naziv": "Televizori",
+                                "robna_marka": "SONY",
+                                "robna_marka_naziv": "Sony",
+                                "jamstvo": "001",
+                                "jamstvo_naziv": "Jamstvo 24 mjeseca",
+                                "duzina": 0,
+                                "sirina": 0,
+                                "visina": 0,
+                                "masa": 0,
+                                "volumen": 0,
+                                "pakiranje": 0,
+                                "pakiranje_masa": 0,
+                                "pakiranje_trans": 0,
+                                "pakiranje_trans_masa": 0,
+                                "pakiranje_trans_duzina": 0,
+                                "pakiranje_trans_sirina": 0,
+                                "pakiranje_trans_visina": 0,
+                                "grupa_artikla_id": "2",
+                                "grupa_artikla__sid": "42",
+                                "stanje_kol": 0,
+                                "raspolozivo_kol": 0,
+                                "stanje": "N",
+                                "raspolozivo": "N",
+                                "webshop_mpc": 0,
+                                "atributi": [
+                                    {
+                                    "atribut": "",
+                                    "atribut_uid": "10-42",
+                                    "b2b_atribut": "",
+                                    "naziv": "Boja",
+                                    "atribut_tip": "Odabir",
+                                    "aktivan": "N",
+                                    "redoslijed": 2,
+                                    "vidljiv": "D",
+                                    "vrijednost": "Crvena"
+                                    }
+                                ]
+                                }
+                            ]
+                            }
+                        ]
+                        }
+                    }
+                    }
+                }
+                }
+            }
+            },
       "/datasnap/rest/artikli/dokumenti/{file_uid}": {
         "get": {
           "operationId": "getProductDocuments",
@@ -65,10 +172,653 @@
             }
           }
         }
+      },
+      "/datasnap/rest/artikli/dodaci/lista/{od_zapisa,broj_zapisa}": {
+        "get": {
+          "operationId": "getProductsWithAdditionalProducts",
+          "summary": "Products – retrieval of products with additional products",
+          "description": "Retrieval of product list including additional products, product groups, brands and suppliers",
+          "tags": ["Products"],
+          "parameters": [
+            {
+              "name": "od_zapisa,broj_zapisa",
+              "in": "path",
+              "required": true,
+              "description": "Pagination parameter [start_record,record_count]",
+              "schema": {
+                "type": "string"
+              },
+              "example": "[41,1]"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductsWithAdditionalProductsResponse"
+                  },
+                  "example": {
+                    "result": [
+                      {
+                        "artikli": [
+                          {
+                            "id": 5463,
+                            "sid": 42,
+                            "artikl_uid": "5463-42",
+                            "artikl_b2b": null,
+                            "artikl": "a1 prvi",
+                            "naziv": "a1 prvi art",
+                            "naziv_kratki": null,
+                            "barcode": null,
+                            "jm": "kom",
+                            "opis": null,
+                            "cijena_jm": null,
+                            "vpc": 1.3272,
+                            "mpc": 1.659,
+                            "enabled": "D",
+                            "usluga": "N",
+                            "materijal": "N",
+                            "eol": "N",
+                            "ima_serijski_broj": "N",
+                            "multipack": "N",
+                            "trgovacka_roba": "N",
+                            "duzina": null,
+                            "bundle": "N",
+                            "webshop": "D",
+                            "specifikacija": null,
+                            "kataloski_broj": null,
+                            "kolicina_min_prodaja": null,
+                            "nc": 100,
+                            "porezna_tarifa": "25",
+                            "grupa_artikla_uid": "160-42",
+                            "grupa_artikla": "MO",
+                            "grupa_artikla_naziv": "Mobiteli",
+                            "artikl_pj_valuta_uid": "1-42",
+                            "artikl_pj_valuta_naziv": "Kuna",
+                            "artikl_pj_visible": "D",
+                            "artikl_pj_mpc": null,
+                            "robna_marka_uid": null,
+                            "robna_marka_naziv": null,
+                            "kolekcija": null,
+                            "kolekcija_naziv": null,
+                            "mpc_prvi": 1.659,
+                            "stanje_kol": -3,
+                            "raspolozivo": "N",
+                            "dodaci": [
+                              {
+                                "dodatak__artikl_uid": null,
+                                "dodatak__artikl": null,
+                                "dodatak__artikl_b2b": null,
+                                "dodatak__grupa_artikla_uid": null,
+                                "dodatak__grupa_artikla": null,
+                                "dodatak__grupa_artikla_b2b": null,
+                                "napomena": null,
+                                "dodatak__robna_marka_uid": "23-42",
+                                "dodatak__robna_marka": "NI",
+                                "dodatak__robna_marka_b2b": null,
+                                "dobavljac__partner_uid": null,
+                                "dobavljac__partner": null,
+                                "dobavljac__partner_b2b": null
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/prijevodi/{sifra_jezika}/{od_zapisa,broj_zapisa}": {
+        "get": {
+          "operationId": "getProductsWithTranslations",
+          "summary": "Products – retrieval of products with translations",
+          "description": "Retrieval of product list with translations for selected language",
+          "tags": ["Products"],
+          "parameters": [
+            {
+              "name": "sifra_jezika",
+              "in": "path",
+              "required": true,
+              "description": "Language code",
+              "schema": {
+                "type": "string"
+              },
+              "example": "ENG"
+            },
+            {
+              "name": "od_zapisa,broj_zapisa",
+              "in": "path",
+              "required": true,
+              "description": "Pagination parameter [start_record,record_count]",
+              "schema": {
+                "type": "string"
+              },
+              "example": "[21,1]"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductsWithTranslationsResponse"
+                  },
+                  "example": {
+                    "result": [
+                      {
+                        "artikli": [
+                          {
+                            "id": 2490,
+                            "sid": 42,
+                            "artikl_uid": "2490-42",
+                            "artikl": "001010",
+                            "artikl_b2b": null,
+                            "prijevodi": [
+                              {
+                                "polje": "naziv",
+                                "vrijednost": "Product 001"
+                              },
+                              {
+                                "polje": "specifikacija",
+                                "vrijednost": "Specification \nfor; 001"
+                              },
+                              {
+                                "polje": "opis",
+                                "vrijednost": "Description 001"
+                              },
+                              {
+                                "polje": "naziv_kratki",
+                                "vrijednost": "short 001010"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/sastavnice/uid/{artikl_uid}": {
+        "get": {
+          "operationId": "getProductsWithComponentsByUid",
+          "summary": "Products – retrieval of products with components",
+          "description": "Retrieval of a single product with its components",
+          "tags": ["Products"],
+          "parameters": [
+            {
+              "name": "artikl_uid",
+              "in": "path",
+              "required": true,
+              "description": "Product UID in Luceed",
+              "schema": {
+                "type": "string"
+              },
+              "example": "917-42"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductsWithComponentsResponse"
+                  },
+                  "example": {
+                    "result": [
+                      {
+                        "artikli": [
+                          {
+                            "id": 917,
+                            "sid": 42,
+                            "artikl_uid": "917-42",
+                            "artikl": "500300",
+                            "artikl_b2b": null,
+                            "sastavnice": [
+                              {
+                                "artikl_uid": "908-42",
+                                "naziv": "Notebook Lenovo Ideapad L340.",
+                                "artikl": "500204",
+                                "kolicina": 1,
+                                "mpc": 384.8961,
+                                "vpc": 132.7228,
+                                "mpc_rabat": 0,
+                                "vpc_rabat": 10,
+                                "kalo": 0,
+                                "gratis": "N",
+                                "napomena": null,
+                                "modified": "21.4.2020. 17:15:11"
+                              },
+                              {
+                                "artikl_uid": "915-42",
+                                "naziv": "Logitech miš optički bežični crni.",
+                                "artikl": "500212",
+                                "kolicina": 1,
+                                "mpc": 13.1396,
+                                "vpc": 9.2906,
+                                "mpc_rabat": 0,
+                                "vpc_rabat": 10,
+                                "kalo": 0,
+                                "gratis": "N",
+                                "napomena": null,
+                                "modified": "21.4.2020. 17:15:13"
+                              },
+                              {
+                                "artikl_uid": "911-42",
+                                "naziv": "Torba za notebook 16\".",
+                                "artikl": "500207",
+                                "kolicina": 1,
+                                "mpc": 13.2723,
+                                "vpc": 6.6361,
+                                "mpc_rabat": 0,
+                                "vpc_rabat": 10,
+                                "kalo": 0,
+                                "gratis": "N",
+                                "napomena": null,
+                                "modified": "21.4.2020. 17:15:14"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/sastavnice/sifra/{sifra_artikla}": {
+        "get": {
+          "operationId": "getProductsWithComponentsByCode",
+          "summary": "Products – retrieval of products with components",
+          "description": "Retrieval of a single product with its components",
+          "tags": ["Products"],
+          "parameters": [
+            {
+              "name": "sifra_artikla",
+              "in": "path",
+              "required": true,
+              "description": "Product code in Luceed",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductsWithComponentsResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artiklipopusti/sifra/{sifra}": {
+        "get": {
+          "operationId": "getItemsOnSaleByCode",
+          "summary": "Items on sale",
+          "description": "List of items on sale",
+          "tags": ["Products"],
+          "parameters": [
+            {
+              "name": "sifra",
+              "in": "path",
+              "required": true,
+              "description": "Item code",
+              "schema": {
+                "type": "string"
+              },
+              "example": "200"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ItemsOnSaleResponse"
+                  },
+                  "example": {
+                    "result": [
+                      {
+                        "artikli_popusti": [
+                          {
+                            "artikl_uid": "1106-42",
+                            "artikl": "200",
+                            "artikl_naziv": "200",
+                            "mpc": 4220,
+                            "akcija_uid": "0-0",
+                            "akcija_naziv": "",
+                            "akcija_od_datuma": "21.5.2022",
+                            "akcija_do_datuma": "21.5.2022",
+                            "tip_snizenja_cijena": "",
+                            "naziv_tipa_snizenja_cijena": "",
+                            "snizenje_od_datuma": "21.5.2022",
+                            "snizenje_do_datuma": "21.5.2022",
+                            "snizenje_dana": 10,
+                            "najnizi_mpc_30_dana": 4220,
+                            "najnizi_mpc_od_datuma": "21.5.2022"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artiklipopusti/lista": {
+        "get": {
+          "operationId": "getItemsOnSaleList",
+          "summary": "Items on sale",
+          "description": "List of items on sale",
+          "tags": ["Products"],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ItemsOnSaleResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/bundleartikl/lista": {
+        "get": {
+          "operationId": "getBundleItemsList",
+          "summary": "Bundle items – data acquisition",
+          "description": "Bundle items retrieval",
+          "tags": ["Products"],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BundleItemsResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/bundleartikl/lista/uid/{artikl_uid}": {
+        "get": {
+          "operationId": "getBundleItemsByUid",
+          "summary": "Bundle items – data acquisition",
+          "description": "Bundle items retrieval",
+          "tags": ["Products"],
+          "parameters": [
+            {
+              "name": "artikl_uid",
+              "in": "path",
+              "required": true,
+              "description": "Bundle item UID",
+              "schema": {
+                "type": "string"
+              },
+              "example": "67355-42"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BundleItemsResponse"
+                  },
+                  "example": {
+                    "result": [
+                      {
+                        "bundle": [
+                          {
+                            "artikl_uid": "67355-42",
+                            "artikl_b2b": null,
+                            "artikl": "bunAn",
+                            "bundle_stavke": [
+                              {
+                                "stavka__artikl_uid": "1036-42",
+                                "stavka__artikl_b2b": null,
+                                "stavka__artikl": "0511",
+                                "mpc": 99.99,
+                                "mpc_rabat": 0,
+                                "vpc": 88.49,
+                                "vpc_rabat": 0,
+                                "kolicina": 1,
+                                "kalo": 0,
+                                "gratis": "N",
+                                "napomena": null
+                              },
+                              {
+                                "stavka__artikl_uid": "922-42",
+                                "stavka__artikl_b2b": null,
+                                "stavka__artikl": "1000_S",
+                                "mpc": 0,
+                                "mpc_rabat": 0,
+                                "vpc": 0,
+                                "vpc_rabat": 0,
+                                "kolicina": 1,
+                                "kalo": 0,
+                                "gratis": "N",
+                                "napomena": null
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/bundleartikl/lista/b2b/{artikl_b2b}": {
+        "get": {
+          "operationId": "getBundleItemsByB2b",
+          "summary": "Bundle items – data acquisition",
+          "description": "Bundle items retrieval",
+          "tags": ["Products"],
+          "parameters": [
+            {
+              "name": "artikl_b2b",
+              "in": "path",
+              "required": true,
+              "description": "Bundle item B2B code",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BundleItemsResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/snimi": {
+        "post": {
+          "operationId": "createProduct",
+          "summary": "Products – enter / modify items in Luceed",
+          "description": "entering products to the database (POST)",
+          "tags": ["Products"],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductCreateRequest"
+                },
+                "example": {
+                  "artikli": [
+                    {
+                      "artikl_b2b": "A4",
+                      "artikl": "Rest4",
+                      "naziv": "Rest Servis artikl 4",
+                      "porezna_tarifa": "25",
+                      "mpc": 11,
+                      "usluga": "D"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductCreateResponse"
+                  },
+                  "example": {
+                    "result": ["42975-42"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "operationId": "updateProduct",
+          "summary": "Products – enter / modify items in Luceed",
+          "description": "modification of products (PUT)",
+          "tags": ["Products"],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductCreateRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductCreateResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/datasnap/rest/artikli/atribut": {
+        "put": {
+          "operationId": "updateProductAttributes",
+          "summary": "Products – entering and modifying product attributes",
+          "description": "entering and modifying product attributes (PUT)",
+          "tags": ["Products"],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductAttributesRequest"
+                },
+                "example": {
+                  "atributi": [
+                    {
+                      "doc": "r1",
+                      "atribut_uid": "16-42",
+                      "vrijednost": "2.11"
+                    },
+                    {
+                      "doc": "r1",
+                      "atribut_uid": "18-42",
+                      "vrijednost": "11"
+                    },
+                    {
+                      "doc": "r1",
+                      "atribut": "boja",
+                      "vrijednost": "crna"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductAttributesResponse"
+                  },
+                  "example": {
+                    "result": [[true, true, true]]
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "components": {
       "schemas": {
+        "ProductsResponse": {
+            "type": "object",
+            "properties": {
+                "result": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                    "artikli": {
+                        "type": "array",
+                        "items": {
+                        "$ref": "#/components/schemas/ProductCatalogComplete"
+                        }
+                    }
+                    }
+                }
+                }
+            }
+        },
         "FilesResponse": {
           "type": "object",
           "properties": {
@@ -97,7 +847,7 @@
               "maxLength": 50
             },
             "filename": {
-              "type": "string", 
+              "type": "string",
               "description": "Filename",
               "maxLength": 200
             },
@@ -131,14 +881,2240 @@
               "description": "Base64 encoded database"
             }
           }
-        }
-      },
-      "securitySchemes": {
-        "basicAuth": {
-          "type": "http",
-          "scheme": "basic",
-          "description": "HTTP Basic Authentication with username and password"
-        }
-      }
-    }
-  }
+        },
+        "ProductsWithAdditionalProductsResponse": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "artikli": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ProductCatalogComplete"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ProductCatalogComplete": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "description": "ID of product in Luceed (1st part of primary key in Luceed)"
+            },
+            "sid": {
+              "type": "integer",
+              "description": "Server ID (ID location) in Luceed (2nd part of primary key in Luceed)"
+            },
+            "artikl_uid": {
+              "type": "string",
+              "description": "ID and SID of product (id,sid) as one string (unique key of product in Luceed)",
+              "maxLength": 50
+            },
+            "artikl": {
+              "type": "string",
+              "description": "Code of product in Luceed",
+              "maxLength": 50
+            },
+            "naziv": {
+              "type": "string",
+              "description": "Name of product artikla",
+              "maxLength": 200
+            },
+            "barcode": {
+              "type": "string",
+              "description": "Barcode of product",
+              "maxLength": 100
+            },
+            "jm": {
+              "type": "string",
+              "description": "Unit of measure",
+              "maxLength": 50
+            },
+            "kataloski_broj": {
+              "type": "string",
+              "description": "Catalog number of product",
+              "maxLength": 100
+            },
+            "vpc": {
+              "type": "number",
+              "description": "Wholesale price",
+              "multipleOf": 0.0001
+            },
+            "mpc": {
+              "type": "number",
+              "description": "Retail price",
+              "multipleOf": 0.0001
+            },
+            "enabled": {
+              "type": "string",
+              "description": "Is the product active (D/N); Aktivan=\"D\"",
+              "enum": ["D", "N"],
+              "maxLength": 1
+            },
+            "usluga": {
+              "type": "string",
+              "description": "Is the product a service (D/N); Usluga=\"D\"",
+              "enum": ["D", "N"],
+              "maxLength": 1
+            },
+            "materijal": {
+              "type": "string",
+              "description": "Is the product material (D/N); Materijal=\"D\"",
+              "enum": ["D", "N"],
+              "maxLength": 1
+            },
+            "eol": {
+              "type": "string",
+              "description": "Has the product reach the end of its life cycle „end of life\" (EOL)=\"D\"",
+              "enum": ["D", "N"],
+              "maxLength": 1
+            },
+            "webshop": {
+              "type": "string",
+              "description": "Is the product offered on the webshop (D/N); Webshop=\"D\"",
+              "enum": ["D", "N"],
+              "maxLength": 1
+            },
+            "multipack": {
+              "type": "string",
+              "description": "Is the product multipack (the product consists of several parts that do not appear in the invoice but are accounted for in the background; used in hotel industry)",
+              "enum": ["D", "N"],
+              "maxLength": 1
+            },
+            "trgovacka_roba": {
+              "type": "string",
+              "description": "Is the product a merchandise (D/N); Trgovačka roba=\"D\"",
+              "enum": ["D", "N"],
+              "maxLength": 1
+            },
+            "bundle": {
+              "type": "string",
+              "description": "Is the product a bundle (the product consists of several parts that appear on the document)",
+              "enum": ["D", "N"],
+              "maxLength": 1
+            },
+            "osiguranje": {
+              "type": "string",
+              "description": "Is the product marked as insurance (D/N); Osiguranje=\"D\"",
+              "enum": ["D", "N"],
+              "maxLength": 1
+            },
+            "opis": {
+              "type": "string",
+              "description": "Description of product"
+            },
+            "specifikacija": {
+              "type": "string",
+              "description": "Detail specification of product"
+            },
+            "kolicina_min_prodaja": {
+              "type": "number",
+              "description": "Minimum quantity for sale",
+              "multipleOf": 0.0001
+            },
+            "porezna_tarifa": {
+              "type": "string",
+              "description": "Tax rate code",
+              "maxLength": 50
+            },
+            "porezna_tarifa_uid": {
+              "type": "string",
+              "description": "PK od tax rate",
+              "maxLength": 50
+            },
+            "porezna_tarifa_naziv": {
+              "type": "string",
+              "description": "Name of the tax rate",
+              "maxLength": 200
+            },
+            "porezna_tarifa_b2b": {
+              "type": "string",
+              "description": "Link of tax rate to the B2B application",
+              "maxLength": 50
+            },
+            "stopa_pdv": {
+              "type": "number",
+              "description": "VAT rate",
+              "multipleOf": 0.0001
+            },
+            "stopa_pp": {
+              "type": "number",
+              "description": "Consumption tax rate",
+              "multipleOf": 0.0001
+            },
+            "ambalazna_naknada": {
+              "type": "number",
+              "description": "Amount of packaging fee",
+              "multipleOf": 0.0001
+            },
+            "supergrupa_artikla": {
+              "type": "string",
+              "description": "Product supergroup code (the group over the overgroup of the product)",
+              "maxLength": 50
+            },
+            "supergrupa_artikla_naziv": {
+              "type": "string",
+              "description": "Name of supergroup of product (the group over the overgroup of the product)",
+              "maxLength": 200
+            },
+            "nadgrupa_artikla": {
+              "type": "string",
+              "description": "Product overgroup code",
+              "maxLength": 50
+            },
+            "nadgrupa_artikla_naziv": {
+              "type": "string",
+              "description": "Name of overgroup of product",
+              "maxLength": 200
+            },
+            "grupa_artikla": {
+              "type": "string",
+              "description": "Product group code",
+              "maxLength": 50
+            },
+            "grupa_artikla_naziv": {
+              "type": "string",
+              "description": "Product group name",
+              "maxLength": 200
+            },
+            "grupa_artikla_uid": {
+              "type": "string",
+              "description": "Unique key of product group in Luceed",
+              "maxLength": 50
+         },
+         "grupa_artikla_b2b": {
+           "type": "string",
+           "description": "Product's group link with B2B application",
+           "maxLength": 50
+         },
+         "grupa_artikla_b2b_naziv": {
+           "type": "string",
+           "description": "Name of product's group link with B2B application",
+           "maxLength": 50
+         },
+         "robna_marka": {
+           "type": "string",
+           "description": "Brand code",
+           "maxLength": 50
+         },
+         "robna_marka_naziv": {
+           "type": "string",
+           "description": "Brand name",
+           "maxLength": 200
+         },
+         "robna_marka_uid": {
+           "type": "string",
+           "description": "Brand's unique key in Luceed",
+           "maxLength": 50
+         },
+         "robna_marka_b2b": {
+           "type": "string",
+           "description": "Brand's link with B2B application",
+           "maxLength": 50
+         },
+         "spol": {
+           "type": "string",
+           "description": "Gender code",
+           "maxLength": 50
+         },
+         "spol_naziv": {
+           "type": "string",
+           "description": "Gender name",
+           "maxLength": 200
+         },
+         "spol_uid": {
+           "type": "string",
+           "description": "Gender's unique key in Luceed",
+           "maxLength": 50
+         },
+         "spol_b2b": {
+           "type": "string",
+           "description": "Gender's link with B2B application",
+           "maxLength": 50
+         },
+         "marker_uid": {
+           "type": "string",
+           "description": "Marker's unique key in Luceed",
+           "maxLength": 50
+         },
+         "marker_b2b": {
+           "type": "string",
+           "description": "Marker's unique key for B2B application",
+           "maxLength": 50
+         },
+         "marker": {
+           "type": "string",
+           "description": "Marker code",
+           "maxLength": 50
+         },
+         "marker_naziv": {
+           "type": "string",
+           "description": "Marker name",
+           "maxLength": 200
+         },
+         "velicina": {
+           "type": "string",
+           "description": "Size code",
+           "maxLength": 50
+         },
+         "velicina_naziv": {
+           "type": "string",
+           "description": "Size name",
+           "maxLength": 200
+         },
+         "velicina_uid": {
+           "type": "string",
+           "description": "Size's unique key in Luceed",
+           "maxLength": 50
+         },
+         "velicina_b2b": {
+           "type": "string",
+           "description": "Size's link with B2B application",
+           "maxLength": 50
+         },
+         "boja": {
+           "type": "string",
+           "description": "Color code",
+           "maxLength": 50
+         },
+         "boja_naziv": {
+           "type": "string",
+           "description": "Color name",
+           "maxLength": 200
+         },
+         "boja_uid": {
+           "type": "string",
+           "description": "Color's unique key in Luceed",
+           "maxLength": 50
+         },
+         "boja_b2b": {
+           "type": "string",
+           "description": "Color's link with B2B application",
+           "maxLength": 50
+         },
+         "sezona": {
+           "type": "string",
+           "description": "Season code",
+           "maxLength": 50
+         },
+         "sezona_naziv": {
+           "type": "string",
+           "description": "Season name",
+           "maxLength": 200
+         },
+         "sezona_uid": {
+           "type": "string",
+           "description": "Season's unique key in Luceed",
+           "maxLength": 50
+         },
+         "sezona_b2b": {
+           "type": "string",
+           "description": "Season's link with B2B application",
+           "maxLength": 50
+         },
+         "jamstvo": {
+           "type": "string",
+           "description": "Warranty code",
+           "maxLength": 50
+         },
+         "jamstvo_naziv": {
+           "type": "string",
+           "description": "Warranty name",
+           "maxLength": 200
+         },
+         "jamstvo_uid": {
+           "type": "string",
+           "description": "Warranty's unique key in Luceed",
+           "maxLength": 50
+         },
+         "jamstvo_b2b": {
+           "type": "string",
+           "description": "Warranty's link with B2B application",
+           "maxLength": 50
+         },
+         "kolekcija": {
+           "type": "string",
+           "description": "Collection code",
+           "maxLength": 50
+         },
+         "kolekcija_naziv": {
+           "type": "string",
+           "description": "Collection name",
+           "maxLength": 200
+         },
+         "kolekcija_uid": {
+           "type": "string",
+           "description": "Collection's unique key in Luceed",
+           "maxLength": 50
+         },
+         "kolekcija_b2b": {
+           "type": "string",
+           "description": "Collection's link with B2B application",
+           "maxLength": 50
+         },
+         "licenca": {
+           "type": "string",
+           "description": "License code",
+           "maxLength": 50
+         },
+         "licenca_naziv": {
+           "type": "string",
+           "description": "License name",
+           "maxLength": 200
+         },
+         "licenca_uid": {
+           "type": "string",
+           "description": "License's unique key in Luceed",
+           "maxLength": 50
+         },
+         "licenca_b2b": {
+           "type": "string",
+           "description": "License's link with B2B application",
+           "maxLength": 50
+         },
+         "referentna__velicina": {
+           "type": "string",
+           "description": "Reference size code",
+           "maxLength": 50
+         },
+         "referentna__velicina_uid": {
+           "type": "string",
+           "description": "Reference size's unique key in Luceed",
+           "maxLength": 50
+         },
+         "referentna__velicina_b2b": {
+           "type": "string",
+           "description": "Reference size's link with B2B application",
+           "maxLength": 50
+         },
+         "duzina": {
+           "type": "number",
+           "description": "Product length",
+           "multipleOf": 0.0001
+         },
+         "sirina": {
+           "type": "number",
+           "description": "Product width",
+           "multipleOf": 0.0001
+         },
+         "visina": {
+           "type": "number",
+           "description": "Product height",
+           "multipleOf": 0.0001
+         },
+         "masa": {
+           "type": "number",
+           "description": "Product weight",
+           "multipleOf": 0.0001
+         },
+         "volumen": {
+           "type": "number",
+           "description": "Product volume",
+           "multipleOf": 0.0001
+         },
+         "pakiranje": {
+           "type": "number",
+           "description": "Quantity of products in commercial packaging",
+           "multipleOf": 0.0001
+         },
+         "pakiranje_jm": {
+           "type": "string",
+           "description": "Unit of measure of commercial packaging",
+           "maxLength": 50
+         },
+         "cijena_jm": {
+           "type": "string",
+           "description": "Price unit of measure",
+           "maxLength": 50
+         },
+         "pakiranje_masa": {
+           "type": "number",
+           "description": "Weight of commercial packaging",
+           "multipleOf": 0.0001
+         },
+         "pakiranje_barcode": {
+           "type": "string",
+           "description": "Barcode of commercial packaging",
+           "maxLength": 50
+         },
+         "pakiranje_duzina": {
+           "type": "number",
+           "description": "Lenght of commercial packaging",
+           "multipleOf": 0.0001
+         },
+         "pakiranje_visina": {
+           "type": "number",
+           "description": "Height of commercial packaging",
+           "multipleOf": 0.0001
+         },
+         "pakiranje_sirina": {
+           "type": "number",
+           "description": "Width of commercial packaging",
+           "multipleOf": 0.0001
+         },
+         "pakiranje_trans": {
+           "type": "number",
+           "description": "Quantity in transport packaging",
+           "multipleOf": 0.0001
+         },
+         "pakiranje_trans_jm": {
+           "type": "string",
+           "description": "Unit of measure of transport packaging",
+           "maxLength": 50
+         },
+         "pakiranje_trans_masa": {
+           "type": "number",
+           "description": "Weight of transport packaging",
+           "multipleOf": 0.0001
+         },
+         "pakiranje_trans_barcode": {
+           "type": "string",
+           "description": "Barcode of transport packaging",
+           "maxLength": 50
+         },
+         "pakiranje_trans_duzina": {
+           "type": "number",
+           "description": "Lenght of transport packaging",
+           "multipleOf": 0.0001
+         },
+         "pakiranje_trans_sirina": {
+           "type": "number",
+           "description": "Width of transport packaging",
+           "multipleOf": 0.0001
+         },
+         "pakiranje_trans_visina": {
+           "type": "number",
+           "description": "Height of transport packaging",
+           "multipleOf": 0.0001
+         },
+         "paleta_kolicina": {
+           "type": "number",
+           "description": "Quantity of products per pallet",
+           "multipleOf": 0.0001
+         },
+         "paleta_redova": {
+           "type": "number",
+           "description": "Rows on the pallet",
+           "multipleOf": 0.0001
+         },
+         "naziv_kratki": {
+           "type": "string",
+           "description": "Abbreviated product name",
+           "maxLength": 100
+         },
+         "upozorenje": {
+           "type": "string",
+           "description": "Warning that comes with adding product to receipt and other documents"
+         },
+         "deklaracija": {
+           "type": "string",
+           "description": "Product declaration"
+         },
+         "redoslijed": {
+           "type": "string",
+           "description": "Order (e.g., for web view)",
+           "maxLength": 100
+         },
+         "predmet": {
+           "type": "string",
+           "description": "Case code",
+           "maxLength": 50
+         },
+         "predmet_naziv": {
+           "type": "string",
+           "description": "Case name",
+           "maxLength": 200
+         },
+         "predmet_uid": {
+           "type": "string",
+           "description": "Case's unique key in Luceed",
+           "maxLength": 50
+         },
+         "predmet_b2b": {
+           "type": "string",
+           "description": "Case's link with B2B application",
+           "maxLength": 50
+         },
+         "varijanta": {
+           "type": "string",
+           "description": "Variant code",
+           "maxLength": 50
+         },
+         "varijanta_naziv": {
+           "type": "string",
+           "description": "Variant name",
+           "maxLength": 200
+         },
+         "varijanta_uid": {
+           "type": "string",
+           "description": "Variant's unique key in Luceed",
+           "maxLength": 50
+         },
+         "varijanta_b2b": {
+           "type": "string",
+           "description": "Variant's link with B2B application",
+           "maxLength": 50
+         },
+         "osnovni__artikl": {
+           "type": "string",
+           "description": "Base product code",
+           "maxLength": 50
+         },
+         "osnovni__artikl_naziv": {
+           "type": "string",
+           "description": "Base product name",
+           "maxLength": 200
+         },
+         "osnovni__artikl_uid": {
+           "type": "string",
+           "description": "Base product's unique key in Luceed",
+           "maxLength": 50
+         },
+         "osnovni__artikl_b2b": {
+           "type": "string",
+           "description": "Base product's link with B2B application",
+           "maxLength": 50
+         },
+         "porijeklo_drzava": {
+           "type": "string",
+           "description": "Code of country of origin",
+           "maxLength": 50
+         },
+         "porijeklo_drzava_naziv": {
+           "type": "string",
+           "description": "Name of country of origin",
+           "maxLength": 200
+         },
+         "porijeklo_drzava_uid": {
+           "type": "string",
+           "description": "Country of origin's unique key in Luceed",
+           "maxLength": 50
+         },
+         "porijeklo_drzava_b2b": {
+           "type": "string",
+           "description": "Country of origin's link with B2B application",
+           "maxLength": 50
+         },
+         "carinska_tarifa": {
+           "type": "string",
+           "description": "Customs tariff code",
+           "maxLength": 50
+         },
+         "carinska_tarifa_naziv": {
+           "type": "string",
+           "description": "Name of the customs tariff",
+           "maxLength": 200
+         },
+         "carinska_tarifa_uid": {
+           "type": "string",
+           "description": "Customs tariff's unique key in Luceed",
+           "maxLength": 50
+         },
+         "carinska_tarifa_b2b": {
+           "type": "string",
+           "description": "Customs tariff's link with B2B application",
+           "maxLength": 50
+         },
+         "mpc_prvi": {
+           "type": "number",
+           "description": "The first retail price of the product",
+           "multipleOf": 0.0001
+         },
+         "stanje_kol": {
+           "type": "number",
+           "description": "Quantity status of stock product",
+           "multipleOf": 0.0001
+         },
+         "raspolozivo_kol": {
+           "type": "number",
+           "description": "Available quantity of product (Inventory status minus reservations)",
+           "multipleOf": 0.0001
+         },
+         "stanje": {
+           "type": "string",
+           "description": "Informacija ima li artikla ima na stanju (da/ne) Information if product is in stock (yes/no)",
+           "enum": ["D", "N"],
+           "maxLength": 1
+         },
+         "raspolozivo": {
+           "type": "string",
+           "description": "Information whether quantities are available (yes/no)",
+           "enum": ["D", "N"],
+           "maxLength": 1
+         },
+         "artikl_pj_visible": {
+           "type": "string",
+           "description": "Is the product visible in the active BU (Business Unit)",
+           "enum": ["D", "N"],
+           "maxLength": 1
+         },
+         "artikl_pj_mpc": {
+           "type": "number",
+           "description": "Retail price defined for active BU. If there is no information, the default retail is valid.",
+           "multipleOf": 0.0001
+         },
+         "artikl_pj_valuta_uid": {
+           "type": "string",
+           "description": "The unique currency key defined for the active BU",
+           "maxLength": 50
+         },
+         "artikl_pj_valuta": {
+           "type": "string",
+           "description": "Currency code defined for active BU",
+           "maxLength": 50
+         },
+         "artikl_pj_valuta_naziv": {
+           "type": "string",
+           "description": "Currency name defined for active BU",
+           "maxLength": 200
+         },
+         "ima_serijski_broj": {
+           "type": "string",
+           "description": "Does the product have serial numbers (yes/no)",
+           "enum": ["D", "N"],
+           "maxLength": 1
+         },
+         "modified": {
+           "type": "string",
+           "description": "Date and time of product data change",
+           "format": "date"
+         },
+         "napomena": {
+           "type": "string",
+           "description": "Note on product"
+         },
+         "masa_netto": {
+           "type": "number",
+           "description": "Neto weight of product",
+           "multipleOf": 0.0001
+         },
+         "keub": {
+           "type": "string",
+           "description": "KEUB (Book of consumption of flour) category",
+           "maxLength": 50
+         },
+         "koeficijent_statisticke_jm": {
+           "type": "number",
+           "description": "The coefficient of the statistical unit of the product measure",
+           "multipleOf": 0.00000001
+         },
+         "postotak_alkohola": {
+           "type": "number",
+           "description": "Percentage of alcohol contained in the product",
+           "multipleOf": 0.0001
+         },
+         "postotak_kave": {
+           "type": "number",
+           "description": "Percentage of coffee contained in the product",
+           "multipleOf": 0.0001
+         },
+         "nc": {
+           "type": "number",
+           "description": "The purchase price of the product",
+           "multipleOf": 0.0001
+         },
+         "nc_rabat": {
+           "type": "number",
+           "description": "Product purchase price discount",
+           "multipleOf": 0.0001
+         },
+         "nc_zavisni_trosak": {
+           "type": "number",
+           "description": "The dependent cost of the purchase price of the product",
+           "multipleOf": 0.0001
+         },
+         "vpc_marza": {
+           "type": "number",
+           "description": "Wholesale margin of product",
+           "multipleOf": 0.0001
+         },
+         "max_rabat": {
+           "type": "number",
+           "description": "Maximum product discount",
+           "multipleOf": 0.0001
+         },
+         "prioritet": {
+           "type": "integer",
+           "description": "Priority of product"
+         },
+         "valuta_artikli_uid": {
+           "type": "integer",
+           "description": "The unique currency key defined on the product"
+         },
+         "valuta_artikli": {
+           "type": "string",
+           "description": "Currency code defined on the product",
+           "maxLength": 50
+         },
+         "valuta_artikli_naziv": {
+           "type": "string",
+           "description": "The name of the currency defined on the product",
+           "maxLength": 200
+         },
+         "proizvodac_uid": {
+           "type": "integer",
+           "description": "Manufacturer's unique key defined on product"
+         },
+         "proizvodac": {
+           "type": "string",
+           "description": "Manufacturer code defined on product",
+           "maxLength": 50
+         },
+         "proizvodac_naziv": {
+           "type": "string",
+           "description": "Manufacturer name defined on product",
+           "maxLength": 200
+         },
+         "glavni_dobavljac_uid": {
+           "type": "integer",
+           "description": "The unique key of the master vendor defined on the product"
+         },
+         "glavni_dobavljac": {
+           "type": "string",
+           "description": "Main supplier code defined on product",
+           "maxLength": 50
+         },
+         "glavni_dobavljac_naziv": {
+           "type": "string",
+           "description": "The name of the main supplier defined on the product",
+           "maxLength": 200
+         },
+         "glavni_dobavljac_artikl": {
+           "type": "string",
+           "description": "Product code from main supplier",
+           "maxLength": 50
+         },
+         "glavni_dobavljac_artikl_naziv": {
+           "type": "string",
+           "description": "Name of the product from main supplier",
+           "maxLength": 200
+         },
+         "model": {
+           "type": "string",
+           "description": "Model code",
+           "maxLength": 50
+         },
+         "model_uid": {
+           "type": "string",
+           "description": "Model's unique key in Luceed",
+           "maxLength": 50
+         },
+         "model_b2b": {
+           "type": "string",
+           "description": "Mode's link with B2B application",
+           "maxLength": 50
+         },
+         "vrsta_materijala": {
+           "type": "string",
+           "description": "Material type code",
+           "maxLength": 50
+         },
+         "vrsta_materijala_uid": {
+           "type": "string",
+           "description": "Material type's unique key in Luceed",
+           "maxLength": 50
+         },
+         "snizenje_od_datuma": {
+           "type": "string",
+           "description": "Start date of active discount",
+           "format": "date"
+         },
+         "vrsta_materijala_b2b": {
+           "type": "string",
+           "description": "Material type's s link with B2B application",
+           "maxLength": 50
+         },
+         "najnizi_mpc_od_datuma": {
+           "type": "string",
+           "description": "Date from which the promotion/sale is applied for the article, and from which it is looked back 30 days for the lowest RP in the last 30 days",
+           "format": "date"
+         },
+         "najnizi_mpc_30_dana": {
+           "type": "number",
+           "description": "The lowest RP in the last 30 days from the date of start of the promotion/sale",
+           "multipleOf": 0.0001
+         },
+         "isticanje_sidrene_cijene": {
+           "type": "string",
+           "description": "Disclosure obligation label",
+           "enum": ["D", "N"],
+           "maxLength": 1
+         },
+         "sidrena_mpc": {
+           "type": "number",
+           "description": "Anchor price",
+           "multipleOf": 0.0001
+         },
+         "sidrena_mpc_od_datuma": {
+           "type": "string",
+           "description": "Anchor price date",
+           "format": "date"
+         },
+         "atributi": {
+           "type": "array",
+           "items": {
+             "$ref": "#/components/schemas/ProductAttribute"
+           }
+         },
+         "dokumenti": {
+           "type": "array",
+           "items": {
+             "$ref": "#/components/schemas/ProductDocument"
+           }
+         },
+         "jezici": {
+           "type": "array",
+           "items": {
+             "$ref": "#/components/schemas/ProductLanguage"
+           }
+         },
+         "porezni_sustavi": {
+           "type": "array",
+           "items": {
+             "$ref": "#/components/schemas/ProductTaxSystem"
+           }
+         },
+         "dodaci": {
+           "type": "array",
+           "items": {
+             "$ref": "#/components/schemas/AdditionalProduct"
+           }
+         }
+       }
+     },
+     "ProductAttribute": {
+       "type": "object",
+       "properties": {
+         "atribut_uid": {
+           "type": "string",
+           "description": "PK of attribute in Luceed database",
+           "maxLength": 100
+         },
+         "atribut_b2b": {
+           "type": "string",
+           "description": "PK of attribute in B2B application",
+           "maxLength": 100
+         },
+         "atribut": {
+           "type": "string",
+           "description": "Attribute code",
+           "maxLength": 50
+         },
+         "naziv": {
+           "type": "string",
+           "description": "Attribute name",
+           "maxLength": 200
+         },
+         "atribut_tip": {
+           "type": "string",
+           "description": "Type of attribute",
+           "maxLength": 50
+         },
+         "aktivan": {
+           "type": "string",
+           "description": "Active (yes/no)",
+           "enum": ["D", "N"],
+           "maxLength": 1
+         },
+         "redoslijed": {
+           "type": "string",
+           "description": "Order",
+           "maxLength": 50
+         },
+         "vidljiv": {
+           "type": "string",
+           "description": "Visible (yes/no)",
+           "enum": ["D", "N"],
+           "maxLength": 1
+         },
+         "grupa_atributa_uid": {
+           "type": "string",
+           "description": "PK of attribute group in Luceed",
+           "maxLength": 50
+         },
+         "grupa_atributa_b2b": {
+           "type": "string",
+           "description": "PK of attribute group in B2B application",
+           "maxLength": 50
+         },
+         "grupa_atributa": {
+           "type": "string",
+           "description": "Attribute group code",
+           "maxLength": 50
+         },
+         "grupa_atributa_naziv": {
+           "type": "string",
+           "description": "Attribute group name",
+           "maxLength": 200
+         },
+         "vrijednost": {
+           "type": "string",
+           "description": "Attribute value for this product"
+         }
+       }
+     },
+     "ProductDocument": {
+       "type": "object",
+       "properties": {
+         "file_uid": {
+           "type": "string",
+           "description": "PK of file in Luceed database",
+           "maxLength": 50
+         },
+         "filename": {
+           "type": "string",
+           "description": "Filename",
+           "maxLength": 200
+         },
+         "naziv": {
+           "type": "string",
+           "description": "Name of file",
+           "maxLength": 200
+         },
+         "opis": {
+           "type": "string",
+           "description": "File description"
+         },
+         "md5": {
+           "type": "string",
+           "description": "MD5 of filename",
+           "maxLength": 32
+         },
+         "url": {
+           "type": "string",
+           "description": "url of the product document from the catalog"
+         }
+       }
+     },
+     "ProductLanguage": {
+       "type": "object",
+       "properties": {
+         "naziv": {
+           "type": "string",
+           "description": "Name od product",
+           "maxLength": 200
+         },
+         "naziv_kratki": {
+           "type": "string",
+           "description": "Product short name",
+           "maxLength": 100
+         },
+         "jm": {
+           "type": "string",
+           "description": "Unit of measure",
+           "maxLength": 50
+         },
+         "pakiranje_jm": {
+           "type": "string",
+           "description": "Commercial packaging unit",
+           "maxLength": 50
+         },
+         "opis": {
+           "type": "string",
+           "description": "Product description"
+         },
+         "jezik_uid": {
+           "type": "string",
+           "description": "PK of language in Luceed database",
+           "maxLength": 100
+         },
+         "jezik": {
+           "type": "string",
+           "description": "Language code",
+           "maxLength": 50
+         },
+         "jezik_naziv": {
+           "type": "string",
+           "description": "Language name",
+           "maxLength": 200
+         }
+       }
+     },
+     "ProductTaxSystem": {
+       "type": "object",
+       "properties": {
+         "porezni_sustav": {
+           "type": "string",
+           "description": "Tax system code",
+           "maxLength": 50
+         },
+         "porezna_tarifa": {
+           "type": "string",
+           "description": "Tax rate code",
+           "maxLength": 50
+         },
+         "porezna_tarifa_uid": {
+           "type": "string",
+           "description": "Tax rate PK",
+           "maxLength": 50
+         },
+         "porezna_tarifa_naziv": {
+           "type": "string",
+           "description": "Tax rate name",
+           "maxLength": 200
+         },
+         "stopa_pdv": {
+           "type": "number",
+           "description": "VAT rate",
+           "multipleOf": 0.01
+         },
+         "stopa_pp": {
+           "type": "number",
+           "description": "Consumption tax rate",
+           "multipleOf": 0.01
+         },
+         "ambalazna_naknada": {
+           "type": "number",
+           "description": "Packaging allowance amount",
+           "multipleOf": 0.01
+         }
+       }
+     },
+     "AdditionalProduct": {
+       "type": "object",
+       "properties": {
+         "dodatak__artikl_uid": {
+           "type": "string",
+           "description": "Additional product PK in Luceed",
+           "maxLength": 50
+         },
+         "dodatak__artikl": {
+           "type": "string",
+           "description": "Additional product code in Luceed",
+           "maxLength": 50
+         },
+         "dodatak__artikl_b2b": {
+           "type": "string",
+           "description": "Additional product PK in B2B system",
+           "maxLength": 50
+         },
+         "dodatak__grupa_artikla_uid": {
+           "type": "string",
+           "description": "Additional product group PK in Luceed",
+           "maxLength": 50
+         },
+         "dodatak__grupa_artikla": {
+           "type": "string",
+           "description": "Additional product group code in Luceed",
+           "maxLength": 50
+         },
+         "dodatak__grupa_artikla_b2b": {
+           "type": "string",
+           "description": "Additional product group in B2B application",
+           "maxLength": 50
+         },
+         "napomena": {
+           "type": "string",
+           "description": "Remark"
+         },
+         "dodatak__robna_marka_uid": {
+           "type": "string",
+           "description": "Additional product brand PK in Luceed",
+           "maxLength": 50
+         },
+         "dodatak__robna_marka": {
+           "type": "string",
+           "description": "Additional product brand code in Luceed",
+           "maxLength": 50
+         },
+         "dodatak__robna_marka_b2b": {
+           "type": "string",
+           "description": "Additional product brand in B2B application",
+           "maxLength": 50
+         },
+         "dobavljac__partner_uid": {
+           "type": "string",
+           "description": "Additional product supplier PK in Luceed",
+           "maxLength": 50
+         },
+         "dobavljac__partner": {
+           "type": "string",
+           "description": "Additional product supplier code in Luceed",
+           "maxLength": 50
+         },
+         "dobavljac__partner_b2b": {
+           "type": "string",
+           "description": "Additional product supplier in B2B application",
+           "maxLength": 50
+         }
+       }
+     },
+     "ProductsWithTranslationsResponse": {
+       "type": "object",
+       "properties": {
+         "result": {
+           "type": "array",
+           "items": {
+             "type": "object",
+             "properties": {
+               "artikli": {
+                 "type": "array",
+                 "items": {
+                   "$ref": "#/components/schemas/ProductWithTranslations"
+                 }
+               }
+             }
+           }
+         }
+       }
+     },
+     "ProductWithTranslations": {
+       "type": "object",
+       "properties": {
+         "id": {
+           "type": "integer",
+           "description": "Product ID in Luceed (first part of PK in Luceed)"
+         },
+         "sid": {
+           "type": "integer",
+           "description": "Server ID (location ID) in Luceed (second part of PK in Luceed)"
+         },
+         "artikl_uid": {
+           "type": "string",
+           "description": "Product PK in Luceed",
+           "maxLength": 50
+         },
+         "artikl": {
+           "type": "string",
+           "description": "Product code in Luceed",
+           "maxLength": 50
+         },
+         "artikl_b2b": {
+           "type": "string",
+           "description": "Product code in B2B application",
+           "maxLength": 50
+         },
+         "prijevodi": {
+           "type": "array",
+           "items": {
+             "$ref": "#/components/schemas/Translation"
+           }
+         }
+       }
+     },
+     "Translation": {
+       "type": "object",
+       "properties": {
+         "polje": {
+           "type": "string",
+           "description": "Translated field in Luceed",
+           "maxLength": 100
+         },
+         "vrijednost": {
+           "type": "string",
+           "description": "Field translation"
+         }
+       }
+     },
+     "ProductsWithComponentsResponse": {
+       "type": "object",
+       "properties": {
+         "result": {
+           "type": "array",
+           "items": {
+             "type": "object",
+             "properties": {
+               "artikli": {
+                 "type": "array",
+                 "items": {
+                   "$ref": "#/components/schemas/ProductWithComponents"
+                 }
+               }
+             }
+           }
+         }
+       }
+     },
+     "ProductWithComponents": {
+       "type": "object",
+       "properties": {
+         "id": {
+           "type": "integer",
+           "description": "Product ID in Luceed (first part of PK in Luceed)"
+         },
+         "sid": {
+           "type": "integer",
+           "description": "Server ID (location ID) in Luceed (second part of PK in Luceed)"
+         },
+         "artikl_uid": {
+           "type": "string",
+           "description": "Product PK in Luceed",
+           "maxLength": 50
+         },
+         "artikl": {
+           "type": "string",
+           "description": "Product code in Luceed",
+           "maxLength": 50
+         },
+         "artikl_b2b": {
+           "type": "string",
+           "description": "Product code in B2B application",
+           "maxLength": 50
+         },
+         "sastavnice": {
+           "type": "array",
+           "items": {
+             "$ref": "#/components/schemas/Component"
+           }
+         }
+       }
+     },
+     "Component": {
+       "type": "object",
+       "properties": {
+         "artikl_uid": {
+           "type": "string",
+           "description": "UID of product in Luceed",
+           "maxLength": 50
+         },
+         "artikl": {
+           "type": "string",
+           "description": "Product code in Luceed",
+           "maxLength": 50
+         },
+         "naziv": {
+           "type": "string",
+           "description": "Product name in Luceed.",
+           "maxLength": 200
+         },
+         "kolicina": {
+           "type": "number",
+           "description": "Quantity in component.",
+           "multipleOf": 0.0001
+         },
+         "vpc": {
+           "type": "number",
+           "description": "Wholesale price",
+           "multipleOf": 0.0001
+         },
+         "mpc": {
+           "type": "number",
+           "description": "Retail price",
+           "multipleOf": 0.0001
+         },
+         "vpc_rabat": {
+           "type": "number",
+           "description": "Discount on wholesale price",
+           "multipleOf": 0.01
+         },
+         "mpc_rabat": {
+           "type": "number",
+           "description": "Discount on retail price",
+           "multipleOf": 0.01
+         },
+         "kalo": {
+           "type": "number",
+           "description": "Kalo (shrinkage)",
+           "multipleOf": 0.01
+         },
+         "gratis": {
+           "type": "string",
+           "description": "Is part of the component free of charge (yes/no)",
+           "enum": ["D", "N"],
+           "maxLength": 1
+         },
+         "napomena": {
+           "type": "string",
+           "description": "Remark",
+           "maxLength": 200
+         },
+         "modified": {
+           "type": "string",
+           "description": "Date and time of product data change",
+           "format": "date"
+         }
+       }
+     },
+     "ItemsOnSaleResponse": {
+       "type": "object",
+       "properties": {
+         "result": {
+           "type": "array",
+           "items": {
+             "type": "object",
+             "properties": {
+               "artikli_popusti": {
+                 "type": "array",
+                 "items": {
+                   "$ref": "#/components/schemas/ItemOnSale"
+                 }
+               }
+             }
+           }
+         }
+       }
+     },
+     "ItemOnSale": {
+       "type": "object",
+       "properties": {
+         "artikl_uid": {
+           "type": "string",
+           "description": "Item PK in Luceed",
+           "maxLength": 50
+         },
+         "artikl": {
+           "type": "string",
+           "description": "Item code",
+           "maxLength": 50
+         },
+         "artikl_naziv": {
+           "type": "string",
+           "description": "Item name",
+           "maxLength": 200
+         },
+         "mpc": {
+           "type": "number",
+           "description": "Retail price",
+           "multipleOf": 0.0001
+         },
+         "akcija_uid": {
+           "type": "string",
+           "description": "Sale campaign FK in Luceed",
+           "maxLength": 50
+         },
+         "akcija_naziv": {
+           "type": "string",
+           "description": "Sale campaign name",
+           "maxLength": 200
+         },
+         "akcija_od_datuma": {
+           "type": "string",
+           "description": "Sale campaign start date",
+           "format": "date"
+         },
+         "akcija_do_datum": {
+           "type": "string",
+           "description": "Sale campaign end date",
+           "format": "date"
+         },
+         "tip_promjene_cijena_uid": {
+           "type": "string",
+           "description": "Price change type FK in Luceed",
+           "maxLength": 50
+         },
+         "tip_promjene_cijena": {
+           "type": "string",
+           "description": "Price change type code",
+           "maxLength": 50
+         },
+         "tip_promjene_cijena_naziv": {
+           "type": "string",
+           "description": "Price change type name",
+           "maxLength": 200
+         },
+         "snizenje_od_datuma": {
+           "type": "string",
+           "description": "Discount start date",
+           "format": "date"
+         },
+         "snizenje_do_datuma": {
+           "type": "string",
+           "description": "Discount end date",
+           "format": "date"
+         },
+         "snizenje_dana": {
+           "type": "integer",
+           "description": "Discount duration in days"
+         },
+         "najnizi_mpc_30_dana": {
+           "type": "number",
+           "description": "Lowest retail price in the last 30 days",
+           "multipleOf": 0.0001
+         },
+         "najnizi_mpc_od_datuma": {
+           "type": "string",
+           "description": "Lowest retail price date",
+           "format": "date"
+         }
+       }
+     },
+     "BundleItemsResponse": {
+       "type": "object",
+       "properties": {
+         "result": {
+           "type": "array",
+           "items": {
+             "type": "object",
+             "properties": {
+               "bundle": {
+                 "type": "array",
+                 "items": {
+                   "$ref": "#/components/schemas/BundleItem"
+                 }
+               }
+             }
+           }
+         }
+       }
+     },
+     "BundleItem": {
+       "type": "object",
+       "properties": {
+         "artikl_uid": {
+           "type": "string",
+           "description": "Bundle item PK in Luceed",
+           "maxLength": 50
+         },
+         "artikl_b2b": {
+           "type": "string",
+           "description": "Bundle item PK in B2B application",
+           "maxLength": 50
+         },
+         "artikl": {
+           "type": "string",
+           "description": "Bundle item code in Luceed",
+           "maxLength": 50
+         },
+         "bundle_stavke": {
+           "type": "array",
+           "items": {
+             "$ref": "#/components/schemas/BundleComponent"
+           }
+         }
+       }
+     },
+     "BundleComponent": {
+       "type": "object",
+       "properties": {
+         "stavka__artikl_uid": {
+           "type": "string",
+           "description": "Bundle component PK in Luceed",
+           "maxLength": 50
+         },
+         "stavka__artikl_b2b": {
+           "type": "string",
+           "description": "Bundle component PK in B2B application",
+           "maxLength": 50
+         },
+         "stavka__artikl": {
+           "type": "string",
+           "description": "Bundle component code in Luceed",
+           "maxLength": 50
+         },
+         "mpc": {
+           "type": "number",
+           "description": "Retail price",
+           "multipleOf": 0.0001
+         },
+         "mpc_rabat": {
+           "type": "number",
+           "description": "Retail discount",
+           "multipleOf": 0.01
+         },
+         "vpc": {
+           "type": "number",
+           "description": "Wholesale price",
+           "multipleOf": 0.0001
+         },
+         "vpc_rabat": {
+           "type": "number",
+           "description": "Wholesale discount",
+           "multipleOf": 0.01
+         },
+         "kolicina": {
+           "type": "number",
+           "description": "Amount",
+           "multipleOf": 0.0001
+         },
+         "kalo": {
+           "type": "number",
+           "description": "Loss amount",
+           "multipleOf": 0.01
+         },
+         "gratis": {
+           "type": "string",
+           "description": "Free of charge (D – Yes, N – No)",
+           "enum": ["D", "N"],
+           "maxLength": 1
+         },
+         "napomena": {
+           "type": "string",
+           "description": "Note",
+           "maxLength": 200
+         }
+       }
+     },
+     "ProductCreateRequest": {
+       "type": "object",
+       "required": ["artikli"],
+       "properties": {
+         "artikli": {
+           "type": "array",
+           "items": {
+             "$ref": "#/components/schemas/ProductCreateData"
+           }
+         }
+       }
+     },
+     "ProductCreateData": {
+       "type": "object",
+       "properties": {
+         "artikl_uid": {
+           "type": "string",
+           "description": "UID of product in Luceed",
+           "maxLength": 50
+         },
+         "artikl_b2b": {
+           "type": "string",
+           "description": "Unique key of product in B2B(application that sends the data)",
+           "maxLength": 50
+         },
+         "artikl": {
+           "type": "string",
+           "description": "Product code u Luceedu",
+           "maxLength": 50
+         },
+         "naziv": {
+           "type": "string",
+           "description": "Product name",
+           "maxLength": 200
+         },
+         "barcode": {
+           "type": "string",
+           "description": "Barcode of product",
+           "maxLength": 100
+         },
+         "jm": {
+           "type": "string",
+           "description": "Unit of measure",
+           "maxLength": 50
+         },
+         "kataloski_broj": {
+           "type": "string",
+           "description": "Product's catalogue number",
+           "maxLength": 100
+         },
+         "vpc": {
+           "type": "number",
+           "description": "Wholesale price",
+           "multipleOf": 0.0001
+         },
+         "mpc": {
+           "type": "number",
+           "description": "Retail price",
+           "multipleOf": 0.0001
+         },
+         "enabled": {
+           "type": "string",
+           "description": "Is the product enabled (yes/no)",
+           "enum": ["D", "N"],
+           "maxLength": 1,
+           "default": "D"
+         },
+         "usluga": {
+           "type": "string",
+           "description": "Is the product a service (yes/no)",
+           "enum": ["D", "N"],
+           "maxLength": 1,
+           "default": "N"
+         },
+         "materijal": {
+           "type": "string",
+           "description": "Is the product a material (yes/no)",
+           "enum": ["D", "N"],
+           "maxLength": 1,
+           "default": "N"
+         },
+         "eol": {
+           "type": "string",
+           "description": "Did the article reach the end of its life cycle (EOL)=\"D\"",
+           "enum": ["D", "N"],
+           "maxLength": 1,
+           "default": "N"
+         },
+         "webshop": {
+           "type": "string",
+           "description": "Is the item offered for the webshop (yes/no)",
+           "enum": ["D", "N"],
+           "maxLength": 1,
+           "default": "N"
+         },
+         "multipack": {
+           "type": "string",
+           "description": "Is the product multipack (the product consists of several parts that do not appear in the invoice but are accounted for in the background; used in hotel industry)",
+           "enum": ["D", "N"],
+           "maxLength": 1,
+           "default": "N"
+         },
+         "trgovacka_roba": {
+           "type": "string",
+           "description": "Is the product a merchandise",
+           "enum": ["D", "N"],
+           "maxLength": 1,
+           "default": "D"
+         },
+         "bundle": {
+           "type": "string",
+           "description": "Is the product a bundle (the product consists of several parts that appear on the document)",
+           "enum": ["D", "N"],
+           "maxLength": 1,
+           "default": "N"
+         },
+         "osiguranje": {
+           "type": "string",
+           "description": "Is the product marked as insurance",
+           "enum": ["D", "N"],
+           "maxLength": 1,
+           "default": "N"
+         },
+         "opis": {
+           "type": "string",
+           "description": "Product description"
+         },
+         "specifikacija": {
+           "type": "string",
+           "description": "Products detail specification"
+         },
+         "porezna_tarifa": {
+           "type": "string",
+           "description": "Tax tariff code",
+           "maxLength": 50
+         },
+         "porezna_tarifa_uid": {
+           "type": "string",
+           "description": "UID of tax tariff in Luceed",
+           "maxLength": 50
+         },
+         "porezna_tarifa_b2b": {
+           "type": "string",
+           "description": "UID of tax tariff in B2B (application that sends the data)",
+           "maxLength": 50
+         },
+         "grupa_artikla": {
+           "type": "string",
+           "description": "Product group code",
+           "maxLength": 50
+         },
+         "grupa_artikla_uid": {
+           "type": "string",
+           "description": "UID of Product group in Luceed",
+           "maxLength": 50
+         },
+         "grupa_artikla_b2b": {
+           "type": "string",
+           "description": "UID of Product group in B2B (application that sends the data)",
+           "maxLength": 50
+         },
+         "robna_marka": {
+           "type": "string",
+           "description": "Brand code",
+           "maxLength": 50
+         },
+         "robna_marka_uid": {
+           "type": "string",
+           "description": "UID of brand in Luceed",
+           "maxLength": 50
+         },
+         "robna_marka_b2b": {
+           "type": "string",
+           "description": "UID of brand in B2B (application that sends the data)",
+           "maxLength": 50
+         },
+         "jamstvo": {
+           "type": "string",
+           "description": "Warranty code",
+           "maxLength": 50
+         },
+         "jamstvo_uid": {
+           "type": "string",
+           "description": "Warranty UID in Luceed",
+           "maxLength": 50
+         },
+         "jamstvo_b2b": {
+           "type": "string",
+           "description": "Warranty UID in B2B (application that sends the data)",
+           "maxLength": 50
+         },
+         "kolekcija": {
+           "type": "string",
+           "description": "Collection code",
+           "maxLength": 50
+         },
+         "kolekcija_uid": {
+           "type": "string",
+           "description": "Collection UID in Luceedu",
+           "maxLength": 50
+         },
+         "kolekcija_b2b": {
+           "type": "string",
+           "description": "Collection UID in B2B (application that sends the data)",
+           "maxLength": 50
+         },
+         "licenca": {
+           "type": "string",
+           "description": "License code",
+           "maxLength": 50
+         },
+         "licenca_uid": {
+           "type": "string",
+           "description": "License UID in Luceedu",
+           "maxLength": 50
+         },
+         "licenca_b2b": {
+           "type": "string",
+           "description": "License UID in B2B (application that sends the data)",
+           "maxLength": 50
+         },
+         "marker": {
+           "type": "string",
+           "description": "Marker code",
+           "maxLength": 50
+         },
+         "marker_uid": {
+           "type": "string",
+           "description": "Marker UID in Luceedu",
+           "maxLength": 50
+         },
+         "marker_b2b": {
+           "type": "string",
+           "description": "Marker UID in B2B (application that sends the data)",
+           "maxLength": 50
+         },
+         "duzina": {
+           "type": "number",
+           "description": "Product length",
+           "multipleOf": 0.0001
+         },
+         "sirina": {
+           "type": "number",
+           "description": "Product width",
+           "multipleOf": 0.0001
+         },
+         "visina": {
+           "type": "number",
+           "description": "Product hight",
+           "multipleOf": 0.0001
+         },
+         "masa": {
+           "type": "number",
+           "description": "Product weight",
+           "multipleOf": 0.0001
+         },
+         "masa_netto": {
+           "type": "number",
+           "description": "Product neto weight",
+           "multipleOf": 0.0001
+         },
+         "volumen": {
+           "type": "number",
+           "description": "Product volume",
+           "multipleOf": 0.0001
+         },
+         "pakiranje": {
+           "type": "number",
+           "description": "Quantity in commercial packin gof article",
+           "multipleOf": 0.0001
+         },
+         "pakiranje_jm": {
+           "type": "string",
+           "description": "Unit of measure of commercial package",
+           "maxLength": 50
+         },
+         "cijena_jm": {
+           "type": "string",
+           "description": "Price unit of measure",
+           "maxLength": 50
+         },
+         "pakiranje_masa": {
+           "type": "number",
+           "description": "Weight of commercial package",
+           "multipleOf": 0.0001
+         },
+         "pakiranje_barcode": {
+           "type": "string",
+           "description": "Barcode of commercial package",
+           "maxLength": 50
+         },
+         "pakiranje_trans": {
+           "type": "number",
+           "description": "Quantity in commercial package",
+           "multipleOf": 0.0001
+         },
+         "pakiranje_trans_jm": {
+           "type": "string",
+           "description": "The unit of measure of product's transport package",
+           "maxLength": 50
+         },
+         "pakiranje_trans_masa": {
+           "type": "number",
+           "description": "Weight of product's transport package",
+           "multipleOf": 0.0001
+         },
+         "pakiranje_trans_barcode": {
+           "type": "string",
+           "description": "Barcode of product's transport package",
+           "maxLength": 50
+         },
+         "pakiranje_trans_duzina": {
+           "type": "number",
+           "description": "Length of product's transport package",
+           "multipleOf": 0.0001
+         },
+         "pakiranje_trans_sirina": {
+           "type": "number",
+           "description": "Width of product's transport package",
+           "multipleOf": 0.0001
+         },
+         "pakiranje_trans_visina": {
+           "type": "number",
+           "description": "Height of product's transport package",
+           "multipleOf": 0.0001
+         },
+         "pakiranje_duzina": {
+           "type": "number",
+           "description": "Length of product's package",
+           "multipleOf": 0.0001
+         },
+         "pakiranje_sirina": {
+           "type": "number",
+           "description": "Width of product's package",
+           "multipleOf": 0.0001
+         },
+         "pakiranje_visina": {
+           "type": "number",
+           "description": "Height of product's package",
+           "multipleOf": 0.0001
+         },
+         "paleta_kolicina": {
+           "type": "number",
+           "description": "Quantity of palettes",
+           "multipleOf": 0.0001
+         },
+         "paleta_redova": {
+           "type": "number",
+           "description": "Number of rows in a palette",
+           "multipleOf": 0.0001
+         },
+         "naziv_kratki": {
+           "type": "string",
+           "description": "Product's abbreviated name",
+           "maxLength": 100
+         },
+         "upozorenje": {
+           "type": "string",
+           "description": "The warning that comes with adding product to your account and other documents"
+         },
+         "deklaracija": {
+           "type": "string",
+           "description": "Product's declaration"
+         },
+         "predmet": {
+           "type": "string",
+           "description": "Case code",
+           "maxLength": 50
+         },
+         "predmet_uid": {
+           "type": "string",
+           "description": "Case UID in Luceed",
+           "maxLength": 50
+         },
+         "predmet_b2b": {
+           "type": "string",
+           "description": "Case UID in B2B application",
+           "maxLength": 50
+         },
+         "kolicina_min_prodaja": {
+           "type": "number",
+           "description": "Minimum quantity for sale",
+           "multipleOf": 0.0001
+         },
+         "dobavljaci": {
+           "type": "array",
+           "description": "Vendor list (will delete all manually entered if not in the message)",
+           "items": {
+             "$ref": "#/components/schemas/Supplier"
+           }
+         },
+         "barcodes": {
+           "type": "array",
+           "description": "Barcode list (all manually entered will be deleted if not in the message)",
+           "items": {
+             "$ref": "#/components/schemas/BarcodeItem"
+           }
+         },
+         "multipack_stavke": {
+           "type": "array",
+           "description": "List od items if product is multipack",
+           "items": {
+             "$ref": "#/components/schemas/MultipackItem"
+           }
+         }
+       }
+     },
+     "Supplier": {
+       "type": "object",
+       "required": ["main"],
+       "properties": {
+         "partner_uid": {
+           "type": "string",
+           "description": "Partner's PK in Luceed",
+           "maxLength": 50
+         },
+         "partner_b2b": {
+           "type": "string",
+           "description": "Partner's PK in B2B Aplication",
+           "maxLength": 50
+         },
+         "partner": {
+           "type": "string",
+           "description": "Partner code u Luceed-u",
+           "maxLength": 50
+         },
+         "main": {
+           "type": "string",
+           "description": "Is this a main supplier (yes/no)",
+           "enum": ["D", "N"],
+           "maxLength": 1,
+           "default": "N"
+         },
+         "sifra": {
+           "type": "string",
+           "description": "Code from the supplier",
+           "maxLength": 100
+         },
+         "naziv": {
+           "type": "string",
+           "description": "Name at supplier",
+           "maxLength": 200
+         },
+         "dobavljac_stanje": {
+           "type": "number",
+           "description": "Supplier status",
+           "multipleOf": 0.0001
+         },
+         "dobavljac_info": {
+           "type": "string",
+           "maxLength": 200
+         },
+         "dobavljac_rabat": {
+           "type": "number",
+           "description": "Supplier discount",
+           "multipleOf": 0.00000001
+         },
+         "dobavljac_nc": {
+           "type": "number",
+           "description": "Supplier's price",
+           "multipleOf": 0.0001
+         },
+         "dobavljac_zavisni_trosak": {
+           "type": "number",
+           "multipleOf": 0.01
+         },
+         "dobavljac_jm": {
+           "type": "string",
+           "description": "Unit of measure at supplier",
+           "maxLength": 50
+         },
+         "od_datuma": {
+           "type": "string",
+           "format": "date"
+         },
+         "do_datuma": {
+           "type": "string",
+           "format": "date"
+         },
+         "kolicina_min": {
+           "type": "number",
+           "multipleOf": 0.0001
+         },
+         "exclusive": {
+           "type": "string",
+           "description": "Is the item exclusive",
+           "enum": ["D", "N"],
+           "maxLength": 1
+         },
+         "valuta": {
+           "type": "string",
+           "description": "Currency code",
+           "maxLength": 50
+         },
+         "valuta_uid": {
+           "type": "string",
+           "description": "Currency PK in Luceed",
+           "maxLength": 50
+         },
+         "valuta_b2b": {
+           "type": "string",
+           "description": "Currency PK in B2B application",
+           "maxLength": 50
+         }
+       }
+     },
+     "BarcodeItem": {
+       "type": "object",
+       "required": ["barcode"],
+       "properties": {
+         "barcode": {
+           "type": "string",
+           "description": "Product barcode (it is mandatory to list all barcodes in the update)",
+           "maxLength": 100
+         }
+       }
+     },
+     "MultipackItem": {
+       "type": "object",
+       "properties": {
+         "artikli_multipack_b2b": {
+           "type": "string",
+           "description": "PK in B2B application",
+           "maxLength": 100
+         },
+         "stavka__artikl": {
+           "type": "string",
+           "description": "Product code",
+           "maxLength": 50
+         },
+         "stavka__artikl_uid": {
+           "type": "string",
+           "description": "PK of product",
+           "maxLength": 50
+         },
+         "stavka__artikl_b2b": {
+           "type": "string",
+           "description": "PK of product in B2B application"
+         },
+         "u_cijeni": {
+           "type": "string",
+           "enum": ["D", "N"],
+           "maxLength": 1,
+           "default": "N"
+         },
+         "auto": {
+           "type": "string",
+           "enum": ["D", "N"],
+           "maxLength": 1,
+           "default": "N"
+         },
+         "tip": {
+           "type": "string",
+           "description": "Dan/Količina/Dan/Osoba/%",
+           "enum": ["Dan", "Količina", "Dan/Osoba", "%"],
+           "maxLength": 50,
+           "default": "Dan"
+         },
+         "rabat": {
+           "type": "string",
+           "enum": ["D", "N"],
+           "maxLength": 1,
+           "default": "D"
+         },
+         "od_datuma": {
+           "type": "string",
+           "format": "date"
+         },
+         "do_datuma": {
+           "type": "string",
+           "format": "date"
+         },
+         "fiksna_cijena": {
+           "type": "string",
+           "enum": ["D", "N"],
+           "maxLength": 1,
+           "default": "N"
+         },
+         "rabat_posto": {
+           "type": "number",
+           "multipleOf": 0.00000001
+         },
+         "kolicina": {
+           "type": "number",
+           "multipleOf": 0.0001
+         }
+       }
+     },
+     "ProductCreateResponse": {
+       "type": "object",
+       "properties": {
+         "result": {
+           "type": "array",
+           "items": {
+             "type": "string",
+             "description": "Product unique key in Luceed",
+             "maxLength": 50
+           }
+         }
+       }
+     },
+     "ProductAttributesRequest": {
+       "type": "object",
+       "required": ["atributi"],
+       "properties": {
+         "atributi": {
+           "type": "array",
+           "items": {
+             "$ref": "#/components/schemas/ProductAttributeData"
+           }
+         }
+       }
+     },
+     "ProductAttributeData": {
+       "type": "object",
+       "properties": {
+         "doc_uid": {
+           "type": "string",
+           "description": "Product unique key in Luceed",
+           "maxLength": 50
+         },
+         "doc_b2b": {
+           "type": "string",
+           "description": "Product unique key in B2B applicaton",
+           "maxLength": 50
+         },
+         "doc": {
+           "type": "string",
+           "description": "Product code",
+           "maxLength": 50
+         },
+         "atribut_uid": {
+           "type": "string",
+           "description": "Attribute unique key in Luceed",
+           "maxLength": 50
+         },
+         "atribut_b2b": {
+           "type": "string",
+           "description": "Attribute unique key in B2B applicaton",
+           "maxLength": 50
+         },
+         "atribut": {
+           "type": "string",
+           "description": "Attribute code",
+           "maxLength": 50
+         },
+         "vrijednost": {
+           "type": "string",
+           "description": "attribute value, depending on the attribute typeFor type Reference, it is written in the form \"(x, y)\" where x is the first part of the unique key in Luceed and y is the second part"
+         }
+       }
+     },
+     "ProductAttributesResponse": {
+       "type": "object",
+       "properties": {
+         "result": {
+           "type": "array",
+           "items": {
+             "type": "array",
+             "items": {
+               "type": "boolean",
+               "description": "A series of boolean variables that indicate whether an attribute has been modified"
+             }
+           }
+         }
+       }
+     }
+   },
+   "securitySchemes": {
+     "basicAuth": {
+       "type": "http",
+       "scheme": "basic",
+       "description": "HTTP Basic Authentication with username and password"
+     }
+   }
+ }
+}

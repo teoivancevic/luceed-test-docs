@@ -1,4 +1,26 @@
 ---
 title: 'Products – retrieval of products with components'
 openapi: 'GET /datasnap/rest/artikli/sastavnice/uid/{artikl_uid}'
+
 ---
+
+<Danger>
+nedostaje opcija za endpoint isto ovo, samo umjesto /uui/.. da ide /sifra/...
+openapi: 'GET /datasnap/rest/artikli/sastavnice/sifra/{sifra_artikla}'
+- modified field should be actual DATE
+</Danger>
+
+<Note>
+This endpoint can be accessed using either the product UID or product code:
+- By UID: `/datasnap/rest/artikli/sastavnice/uid/{artikl_uid}`
+- By Code: `/datasnap/rest/artikli/sastavnice/sifra/{sifra_artikla}`
+</Note>
+
+{/* <Card title="Alternative Endpoint">
+  <OpenApi openapi="GET /datasnap/rest/artikli/sastavnice/sifra/{sifra_artikla}" />
+</Card>  */}
+
+### Alternative Endpoints
+```http
+GET /datasnap/rest/artikli/sastavnice/sifra/{sifra_artikla}
+```
