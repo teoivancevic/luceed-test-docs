@@ -3,14 +3,14 @@
   "theme": "mint",
   "name": "Luceed API",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/luceed-logo.png",
+    "light": "/logo/luceed-logo-light.jpg"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373"
+    "primary": "#e31e24",
+    "light": "#eb7628",
+    "dark": "#e31e24"
   },
   "topbarLinks": [
     {
